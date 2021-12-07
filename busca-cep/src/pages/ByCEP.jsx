@@ -5,7 +5,6 @@ import { GlobalContext } from '../context/MyContext'
 
 const ByCEP = () => {
   const {cep, setCep, data} = React.useContext(GlobalContext)
-  console.log(data);
   return (
     <>
       <div>
@@ -33,10 +32,19 @@ const ByCEP = () => {
       <div>
         { data && (
           <>
-            <p>CEP: {data.cep}</p>
-            <p>Cidade: {data.localidade}</p>
-            <p>UF: {data.uf}</p>
-            <p>Bairro: {data.bairro}</p>
+            <span>CEP:</span>
+            <p>{data.cep}</p>
+            <span>Cidade:</span>
+            <p>{data.localidade}</p>
+            <span>UF:</span>
+            <p>{data.uf}</p>
+            <span>Bairro: </span>
+            <p>{data.bairro}</p>
+            <Button 
+              text='Nova Busca'
+              type='button'
+              novaBusca='true'
+            />
           </>
           )}
       </div>
