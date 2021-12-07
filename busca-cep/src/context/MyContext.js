@@ -5,6 +5,7 @@ export const GlobalContext = React.createContext()
 const MyContext = ({children}) => {
   const [cep, setCep] = useState(null)
   const [data, setData] = useState('')
+  const [estados, setEstados] = useState(null)
 
   async function fetchApi(cep, type){
     if(type) {
@@ -15,12 +16,22 @@ const MyContext = ({children}) => {
     }
   }
 
+  async function getStateList() {
+    const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados`)
+    const json = await response.json();
+    const estadosList = json.map((item) => item.nome)
+    setEstados(estadosList)
+  }
+
   const value = {
     cep,
     setCep,
     fetchApi,
     data,
-    setData
+    setData,
+    estados,
+    // setEstados,
+    getStateList,
   }
 
   return (
