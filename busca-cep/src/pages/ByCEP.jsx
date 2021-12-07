@@ -8,21 +8,38 @@ const ByCEP = () => {
   console.log(data);
   return (
     <>
-      <Input
-        type='number'
-        text='CEP'
-        isRequired='true'
-        max='8'
-        placeholder='digite seu CEP aqui...'
-        value={ cep }
-        changeStatus={ setCep }
-      />
-      <Button 
-        type='button' 
-        text='Buscar'
-        fetch='true'
-        cep={cep}
-      />
+      <div>
+        <Input
+            type='number'
+            text='CEP'
+            isRequired='true'
+            max='8'
+            placeholder='digite seu CEP aqui...'
+            value={ cep }
+            changeStatus={ setCep }
+          />
+          <Button 
+            type='button' 
+            text='Buscar'
+            fetch='true'
+            cep={cep}
+          />
+          <Button 
+            type='button' 
+            text='Voltar'
+            nextHistory='/'
+          />
+      </div>
+      <div>
+        { data && (
+          <>
+            <p>CEP: {data.cep}</p>
+            <p>Cidade: {data.localidade}</p>
+            <p>UF: {data.uf}</p>
+            <p>Bairro: {data.bairro}</p>
+          </>
+          )}
+      </div>
     </>
   )
 }
