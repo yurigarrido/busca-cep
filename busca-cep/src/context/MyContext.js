@@ -6,6 +6,7 @@ const MyContext = ({children}) => {
   const [cep, setCep] = useState(null)
   const [data, setData] = useState('')
   const [estados, setEstados] = useState(null)
+  const [selectedState, setSelectedState] = useState('Santa Catarina')
 
   async function fetchApi(cep, type){
     if(type) {
@@ -30,7 +31,8 @@ const MyContext = ({children}) => {
     data,
     setData,
     estados,
-    // setEstados,
+    selectedState,
+    setSelectedState,
     getStateList,
   }
 

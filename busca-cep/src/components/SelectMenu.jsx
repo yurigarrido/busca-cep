@@ -1,15 +1,13 @@
 import React from 'react'
 
-const SelectMenu = () => {
-
-  React.useEffect(() => {
-    
-  }, [])
+const SelectMenu = ({ listOptions, handleChange }) => {
 
   return (
     <div>
-      <select>
-        <option></option>
+      <select onChange={({target})=> handleChange(target.value)}>
+        {listOptions && listOptions.map((option, index) => 
+          <option key={index}value={option}>{option}</option>
+        )}
       </select>
     </div>
   )
