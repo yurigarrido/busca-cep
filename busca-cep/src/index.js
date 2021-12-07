@@ -4,15 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import myContext from './context/myContext';
+import MyContext from './context/MyContext';
+import ByCEP from './pages/ByCEP';
+import FromAdress from './pages/FromAdress';
 
 ReactDOM.render(
   <BrowserRouter>
-    <myContext>
+    <MyContext>
       <Routes>
         <Route path="/" element={<App />}/>
+        <Route path="buscarCep" element={<FromAdress />}/>
+        <Route path="buscarEndereco" element={<ByCEP />}/>
       </Routes>
-    </myContext>
+    </MyContext>
   </BrowserRouter>,
   document.getElementById('root')
 );
