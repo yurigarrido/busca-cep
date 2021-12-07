@@ -5,7 +5,9 @@ import Input from './Input'
 import SelectMenu from './SelectMenu'
 
 const FormAdress = () => {
-  const { getStateList, estados, setSelectedState, selectedState } = React.useContext(GlobalContext);
+  const { getStateList, estados, setSelectedState, selectedState, listCounties } = React.useContext(GlobalContext);
+
+  console.log(listCounties);
 
   React.useEffect(() => {
     getStateList()
@@ -18,8 +20,10 @@ const FormAdress = () => {
           listOptions={estados}
           handleChange={setSelectedState}
         />
-        <Input />
-        <Input />
+        <SelectMenu
+          listOptions={listCounties}
+          handleChange={setSelectedState}
+        />
       </form>
         <Button />
         <Button />
