@@ -14,10 +14,12 @@ const Home = () => {
       <Button
         type='button'
         text='Buscar Endereço'
+        nextHistory='buscarEndereco'
       />
       <Button
         type='button'
         text='Buscar CEP'
+        nextHistory='buscarCep'
       />
     </div>
   )
