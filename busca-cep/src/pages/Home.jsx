@@ -20,7 +20,6 @@ const Home = () => {
         type='button'
         text='Buscar CEP'
         nextHistory='buscarCep'
-        adress='true'
       />
     </div>
   )

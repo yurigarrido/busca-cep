@@ -5,28 +5,39 @@ import Input from './Input'
 import SelectMenu from './SelectMenu'
 
 const FormAdress = () => {
-  const { getStateList, estados, setSelectedState, selectedState, listCounties } = React.useContext(GlobalContext);
-
-  console.log(listCounties);
+  const { estados, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti } = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    getStateList()
-  }, [selectedState])
+    
+  }, [])
 
   return (
     <>
       <form>
+        <p>Selecione um estado: </p>
         <SelectMenu
           listOptions={estados}
           handleChange={setSelectedState}
         />
+        <p>Selecione um municipio: </p>
         <SelectMenu
           listOptions={listCounties}
-          handleChange={setSelectedState}
+          handleChange={setSelectedCounti}
+        />
+        <Input
+          text='Logradouro:'
+          type='text'
+          placeholder='digite o logradouro aqui...'
+          value={logradouro}
+          changeStatus={setLogradouro}
         />
       </form>
-        <Button />
-        <Button />
+        <Button 
+          text='Pesquisar'
+        />
+        <Button
+          text='Voltar'
+        />
     </>
   )
 }

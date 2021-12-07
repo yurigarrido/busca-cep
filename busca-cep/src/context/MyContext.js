@@ -3,17 +3,30 @@ import React, { useState } from "react";
 export const GlobalContext = React.createContext()
 
 const MyContext = ({children}) => {
+  // input cpd
   const [cep, setCep] = useState(null)
+  // dados pelo cpf
   const [data, setData] = useState('')
+
+  // estados fetch
   const [estados, setEstados] = useState(null)
+  // cidade fetch
   const [selectedState, setSelectedState] = useState('Rondônia')
+  // cidade selecionada 
+  const [selectedCountie, setSelectedCounti] = useState('')
+  // lista de minicipios
   const [ listCounties, setListCounties] = useState([])
+  // input logadouro
+  const [logradouro, setLogradouro] = useState('')
+
+  // base para pegar id
   const [ InfoLocation, setInfoLocation] = useState([])
+  // id
+  const [id, setId] = useState('11')
 
   async function fetchApi(cep, type){
     if(type) {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
-      // console.log(response);
       const json = await response.json();
       setData(json)
     }
@@ -24,18 +37,26 @@ const MyContext = ({children}) => {
     const json = await response.json();
     const estadosList = json.map((item) =>  item.nome)
     setEstados(estadosList)
+    const ide = json.find(item => item.nome === selectedState);
     setInfoLocation(json)
+    setId(ide.id)
+    setSelectedState('Rondônia')
   }
 
-  async function getCountiesList(estado) {
-     const nome = estado;
-     const id = InfoLocation.find(item => item.nome === nome)
-     console.log(id);
-
-     const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${id.id}/distritos`)
+  async function getCountiesList() {
+    const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${id}/distritos`)
     const json = await response.json();
-    setListCounties(json.map((item, i) => item.nome));
+    setListCounties(json.map((item) => item.nome));
   }
+
+  // async function getCPF() {
+  //   const log = '';
+  //   const sigla = '';
+  //   const nomeCidade = '';
+  //   const response = await fetch(`https://viacep.com.br/ws/${sigla}/${nomeCidade}/${log}/json/`);
+  //   const json = await response.json();
+  //   console.log(json);
+  // }
 
   const value = {
     cep,
@@ -48,7 +69,11 @@ const MyContext = ({children}) => {
     setSelectedState,
     getStateList,
     getCountiesList,
-    listCounties
+    listCounties,
+    logradouro,
+    setLogradouro,
+    setSelectedCounti,
+    selectedCountie,
   }
 
   return (

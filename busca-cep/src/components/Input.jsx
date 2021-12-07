@@ -1,8 +1,6 @@
 import React from 'react'
 
-const Input = ({type, placeholder, changeStatus, text, value, isRequired, max}) => {
-
-  {(value && value.length >= 9) && alert('ja chega')}
+const Input = ({type, placeholder, changeStatus, text, value, isRequired}) => {
 
   return (
     <>

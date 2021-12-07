@@ -1,7 +1,15 @@
 import React from 'react'
 import FormAdress from '../components/FormAdress'
+import { GlobalContext } from '../context/MyContext'
 
-const fromAdress = () => {
+const FromAdress = () => {
+  const { getStateList, getCountiesList, id, selectedState } = React.useContext(GlobalContext)
+
+  React.useEffect(() => {
+    getStateList()
+    getCountiesList()
+  }, [selectedState])
+
   return (
     <div>
       <FormAdress />
@@ -9,4 +17,4 @@ const fromAdress = () => {
   )
 }
 
-export default fromAdress
+export default FromAdress
