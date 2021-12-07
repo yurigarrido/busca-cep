@@ -19,7 +19,8 @@ const MyContext = ({children}) => {
     cep,
     setCep,
     fetchApi,
-    data
+    data,
+    setData
   }
 
   return (
