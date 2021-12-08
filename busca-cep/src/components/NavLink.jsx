@@ -8,7 +8,7 @@ const NavLink = () => {
   return (
     <div>
       <Link to='/'>Home</Link>
-      <> > </>
+      <> {'>'} </>
       <Link to={pathname}>{pageName}</Link>
     </div>
   )

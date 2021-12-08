@@ -25,9 +25,6 @@ const MyContext = ({children}) => {
   const [id, setId] = useState({id: 11})
   //sigla
 
-  // dados pelo cep
-  const [dadosCEP, setDadosCEP] = useState(null)
-
   async function fetchApi(cep, type){
     if(type) {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -39,10 +36,10 @@ const MyContext = ({children}) => {
   async function getStateList() {
     const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados`)
     const json = await response.json();
-    const estadosList = []
-    const yuri = json.map((item) =>  estadosList.push({nome: item.nome, sigla: item.sigla}))
-    setEstados(estadosList)
     setInfoLocation(json)
+    const estadosList = []
+    json.map((item) =>  estadosList.push({nome: item.nome, sigla: item.sigla}))
+    setEstados(estadosList)
   }
 
   async function getCountiesList(estado) {

@@ -13,8 +13,12 @@ const SelectMenu = ({ listOptions, handleChange }) => {
     <div>
       <select onChange={(e)=> handleOnChange(e)}>
         {listOptions && listOptions.map((option, index) => 
-
-          <option  key={index}value={option.sigla ? option.sigla : option}>{option.nome ? option.nome : option}</option>
+          <option 
+            key={index}
+            value={option.sigla ? option.sigla : option}
+          >
+            {option.nome ? option.nome : option}
+          </option>
         )}
       </select>
     </div>

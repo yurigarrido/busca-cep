@@ -4,7 +4,7 @@ import NavLink from '../components/NavLink';
 import { GlobalContext } from '../context/MyContext'
 
 const FromAdress = () => {
-  const { getStateList, getCountiesList, selectedState, setSelectedCounti, listCounties } = React.useContext(GlobalContext);
+  const { getStateList, getCountiesList, selectedState} = React.useContext(GlobalContext);
   
   React.useEffect(() => {
     // pega os estados
