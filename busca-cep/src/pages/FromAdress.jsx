@@ -1,5 +1,6 @@
 import React from 'react'
 import FormAdress from '../components/FormAdress'
+import NavLink from '../components/NavLink';
 import { GlobalContext } from '../context/MyContext'
 
 const FromAdress = () => {
@@ -14,7 +15,7 @@ const FromAdress = () => {
   
   return (
     <div>
-     
+      <NavLink />
       <FormAdress />
     </div>
   )
