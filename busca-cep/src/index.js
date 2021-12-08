@@ -7,9 +7,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MyContext from './context/MyContext';
 import ByCEP from './pages/ByCEP';
 import FromAdress from './pages/FromAdress';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 ReactDOM.render(
   <BrowserRouter>
+    <Header />
     <MyContext>
       <Routes>
         <Route path="/" element={<App />}/>
@@ -17,6 +20,7 @@ ReactDOM.render(
         <Route path="buscarEndereco" element={<ByCEP />}/>
       </Routes>
     </MyContext>
+    <Footer />
   </BrowserRouter>,
   document.getElementById('root')
 );
