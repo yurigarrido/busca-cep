@@ -1,11 +1,23 @@
 import React from 'react'
+import FormAdress from '../components/FormAdress'
+import { GlobalContext } from '../context/MyContext'
 
-const fromAdress = () => {
+const FromAdress = () => {
+  const { getStateList, getCountiesList, selectedState, setSelectedCounti, listCounties } = React.useContext(GlobalContext);
+  
+  React.useEffect(() => {
+    // pega os estados
+    getStateList()
+    // pega os listaDeMunicipios
+    getCountiesList('Rondônia')
+  }, [selectedState])
+  
   return (
     <div>
-      pelo endereço
+     
+      <FormAdress />
     </div>
   )
 }
 
-export default fromAdress
+export default FromAdress
