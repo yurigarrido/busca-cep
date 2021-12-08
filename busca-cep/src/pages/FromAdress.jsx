@@ -3,7 +3,7 @@ import FormAdress from '../components/FormAdress'
 import { GlobalContext } from '../context/MyContext'
 
 const FromAdress = () => {
-  const { getStateList, getCountiesList, selectedState } = React.useContext(GlobalContext);
+  const { getStateList, getCountiesList, selectedState, setSelectedCounti, listCounties } = React.useContext(GlobalContext);
   
   React.useEffect(() => {
     // pega os estados
@@ -14,6 +14,7 @@ const FromAdress = () => {
   
   return (
     <div>
+     
       <FormAdress />
     </div>
   )
