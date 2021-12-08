@@ -11,7 +11,7 @@ const MyContext = ({children}) => {
   // estados fetch
   const [estados, setEstados] = useState(null)
   // cidade fetch
-  const [selectedState, setSelectedState] = useState('Rondônia')
+  const [selectedState, setSelectedState] = useState('null')
   // cidade selecionada 
   const [selectedCountie, setSelectedCounti] = useState('')
   // lista de minicipios
@@ -22,7 +22,8 @@ const MyContext = ({children}) => {
   // base para pegar id
   const [ InfoLocation, setInfoLocation] = useState([])
   // id
-  const [id, setId] = useState('11')
+  const [id, setId] = useState(11)
+
 
   async function fetchApi(cep, type){
     if(type) {
@@ -37,26 +38,27 @@ const MyContext = ({children}) => {
     const json = await response.json();
     const estadosList = json.map((item) =>  item.nome)
     setEstados(estadosList)
-    const ide = json.find(item => item.nome === selectedState);
     setInfoLocation(json)
-    setId(ide.id)
-    setSelectedState('Rondônia')
   }
 
-  async function getCountiesList() {
+  async function getCountiesList(estado) {
+    const nome = estado
+    const info = InfoLocation.find((item) => item.nome === nome)
+    if (info) setId(info.id)
     const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${id}/distritos`)
     const json = await response.json();
-    setListCounties(json.map((item) => item.nome));
+    const listaDeMunicipios = json.map((item) => item.nome)
+    setListCounties(listaDeMunicipios);
   }
 
-  // async function getCPF() {
-  //   const log = '';
-  //   const sigla = '';
-  //   const nomeCidade = '';
-  //   const response = await fetch(`https://viacep.com.br/ws/${sigla}/${nomeCidade}/${log}/json/`);
-  //   const json = await response.json();
-  //   console.log(json);
-  // }
+  async function getCEP() {
+    const log = '';
+    const sigla = '';
+    const nomeCidade = '';
+    const response = await fetch(`https://viacep.com.br/ws/${sigla}/${nomeCidade}/${log}/json/`);
+    const json = await response.json();
+    console.log(json);
+  }
 
   const value = {
     cep,

@@ -3,13 +3,15 @@ import FormAdress from '../components/FormAdress'
 import { GlobalContext } from '../context/MyContext'
 
 const FromAdress = () => {
-  const { getStateList, getCountiesList, id, selectedState } = React.useContext(GlobalContext)
-
+  const { getStateList, getCountiesList, selectedState } = React.useContext(GlobalContext);
+  
   React.useEffect(() => {
+    // pega os estados
     getStateList()
-    getCountiesList()
+    // pega os listaDeMunicipios
+    getCountiesList('Rondônia')
   }, [selectedState])
-
+  
   return (
     <div>
       <FormAdress />

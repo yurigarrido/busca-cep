@@ -6,7 +6,7 @@ const SelectMenu = ({ listOptions, handleChange }) => {
 
   function handleOnChange({target}) {
     handleChange(target.value)
-    getCountiesList()
+    getCountiesList(target.value)
   }
 
   return (

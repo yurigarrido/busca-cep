@@ -7,10 +7,6 @@ import SelectMenu from './SelectMenu'
 const FormAdress = () => {
   const { estados, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti } = React.useContext(GlobalContext);
 
-  React.useEffect(() => {
-    
-  }, [])
-
   return (
     <>
       <form>
@@ -37,6 +33,7 @@ const FormAdress = () => {
         />
         <Button
           text='Voltar'
+          nextHistory='/'
         />
     </>
   )
