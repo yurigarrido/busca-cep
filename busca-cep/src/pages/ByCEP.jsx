@@ -1,12 +1,14 @@
 import React from 'react'
 import Button from '../components/Button'
 import Input from '../components/Input'
+import NavLink from '../components/NavLink'
 import { GlobalContext } from '../context/MyContext'
 
 const ByCEP = () => {
   const {cep, setCep, data} = React.useContext(GlobalContext)
   return (
     <>
+    <NavLink />
       <div>
         <Input
             type='number'
