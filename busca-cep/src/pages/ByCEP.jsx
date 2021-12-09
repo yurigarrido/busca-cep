@@ -1,15 +1,20 @@
 import React from 'react'
-import Button from '../components/Button'
-import Input from '../components/Input'
-import NavLink from '../components/NavLink'
+import { ContainerHome } from '../components/body/styled'
+import Button from '../components/button/Button'
+import Input from '../components/form/Input'
+import NavLink from '../components/navLink/NavLink'
 import { GlobalContext } from '../context/MyContext'
+import { Container } from './styled'
+import iconCep from '../icons/iconCep.svg'
+import SvgHome from '../components/SvgHome'
 
 const ByCEP = () => {
   const {cep, setCep, data} = React.useContext(GlobalContext)
   return (
-    <>
+    <Container>
     <NavLink />
-      <div>
+    <ContainerHome>
+    <div>
         <Input
             type='number'
             text='CEP'
@@ -32,6 +37,11 @@ const ByCEP = () => {
           />
       </div>
       <div>
+        <SvgHome icon={iconCep}/>
+      </div>
+      </ContainerHome>
+      
+      <div>
         { data && (
           <>
             <span>CEP:</span>
@@ -50,7 +60,7 @@ const ByCEP = () => {
           </>
           )}
       </div>
-    </>
+    </Container>
   )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { GlobalContext } from '../context/MyContext';
+import { GlobalContext } from '../../context/MyContext';
+import { ButtonStyled } from './styled'
 
 const Button = ({text, type, nextHistory, adress,  fetch, novaBusca}) => {
   const navigate = useNavigate()
@@ -16,12 +17,12 @@ const Button = ({text, type, nextHistory, adress,  fetch, novaBusca}) => {
   })
 
   return (
-    <button
+    <ButtonStyled
       type={type}
       onClick={() => handleClick()}
     >
      {text}
-    </button>
+    </ButtonStyled>
   )
 }
 

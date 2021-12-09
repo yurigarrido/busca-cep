@@ -1,5 +1,6 @@
 import React from 'react'
-import { GlobalContext } from '../context/MyContext'
+import { GlobalContext } from '../../context/MyContext'
+import { SelectStyled } from './select'
 
 const SelectMenu = ({ listOptions, handleChange }) => {
   const {getCountiesList} = React.useContext(GlobalContext)
@@ -10,8 +11,8 @@ const SelectMenu = ({ listOptions, handleChange }) => {
   }
 
   return (
-    <div>
-      <select onChange={(e)=> handleOnChange(e)}>
+    <>
+      <SelectStyled onChange={(e)=> handleOnChange(e)}>
         {listOptions && listOptions.map((option, index) => 
           <option 
             key={index}
@@ -20,8 +21,8 @@ const SelectMenu = ({ listOptions, handleChange }) => {
             {option.nome ? option.nome : option}
           </option>
         )}
-      </select>
-    </div>
+      </SelectStyled>
+    </>
   )
 }
 

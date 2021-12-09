@@ -1,7 +1,11 @@
 import React from 'react'
-import FormAdress from '../components/FormAdress'
-import NavLink from '../components/NavLink';
+import { ContainerHome } from '../components/body/styled';
+import FormAdress from '../components/form/FormAdress'
+import NavLink from '../components/navLink/NavLink';
+import SvgHome from '../components/SvgHome';
 import { GlobalContext } from '../context/MyContext'
+import { Container } from './styled';
+import iconCep from '../icons/iconCep.svg';
 
 const FromAdress = () => {
   const { getStateList, getCountiesList, selectedState} = React.useContext(GlobalContext);
@@ -14,10 +18,17 @@ const FromAdress = () => {
   }, [selectedState])
   
   return (
-    <div>
+    <Container>
+      <ContainerHome>
+      <div>
       <NavLink />
       <FormAdress />
-    </div>
+      </div>
+      <div>
+        <SvgHome icon={iconCep}/>
+      </div>
+      </ContainerHome>
+    </Container>
   )
 }
 
