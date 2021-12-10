@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MyContext from './context/MyContext';
 import ByCEP from './pages/ByCEP';
 import FromAdress from './pages/FromAdress';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import GlobalStyle from './GlobalStyle';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -21,6 +21,7 @@ ReactDOM.render(
       </Routes>
     </MyContext>
     <Footer />
+    <GlobalStyle />
   </BrowserRouter>,
   document.getElementById('root')
 );

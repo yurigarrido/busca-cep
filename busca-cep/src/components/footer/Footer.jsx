@@ -1,4 +1,5 @@
 import React from 'react'
+import { FooterStyled } from './styled'
 
 const Footer = () => {
 
@@ -6,9 +7,9 @@ const Footer = () => {
   const ano = data.getFullYear();
 
   return (
-    <footer>
+    <FooterStyled>
       { ano } - BuscadorCEP.
-    </footer>
+    </FooterStyled>
   )
 }
 

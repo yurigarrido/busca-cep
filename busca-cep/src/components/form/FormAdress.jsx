@@ -1,21 +1,24 @@
 import React from 'react'
-import { GlobalContext } from '../context/MyContext'
-import Button from './Button'
+import { GlobalContext } from '../../context/MyContext'
+import Button from '../button/Button'
 import Input from './Input'
 import SelectMenu from './SelectMenu'
+import { FormStyled } from './styled'
+import { Label } from './label'
+import { ResponseCEP } from '../styledResponse'
 
 const FormAdress = () => {
-  const { estados, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti, data } = React.useContext(GlobalContext);
+  const { estados, dataCEP, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti, data } = React.useContext(GlobalContext);
 
   return (
     <>
-      <form>
-        <p>Selecione um estado: </p>
+      <FormStyled>
+        <Label>Selecione um estado: </Label>
         <SelectMenu
           listOptions={estados}
           handleChange={setSelectedState}
         />
-        <p>Selecione um municipio: </p>
+        <Label>Selecione um municipio: </Label>
         <SelectMenu
           listOptions={listCounties}
           handleChange={setSelectedCounti}
@@ -27,7 +30,7 @@ const FormAdress = () => {
           value={logradouro}
           changeStatus={setLogradouro}
         />
-      </form>
+      </FormStyled>
         <Button 
           text='Pesquisar'
           adress
@@ -36,19 +39,17 @@ const FormAdress = () => {
           text='Voltar'
           nextHistory='/'
         />
-        <div>
-        { data && (
+        { dataCEP && (
           <>
 
-            <p>{data[0].cep}</p>
             <Button 
               text='Nova Busca'
               type='button'
               novaBusca='true'
             />
+            <ResponseCEP> CEP: {dataCEP[0].cep}</ResponseCEP>
           </>
           )}
-      </div>
     </>
   )
 }

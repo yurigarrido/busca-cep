@@ -23,7 +23,9 @@ const MyContext = ({children}) => {
   const [ InfoLocation, setInfoLocation] = useState([])
   // id
   const [id, setId] = useState({id: 11})
-  //sigla
+  //data cep
+  const [dataCEP, setDataCEP] = useState(null)
+
 
   async function fetchApi(cep, type){
     if(type) {
@@ -61,7 +63,7 @@ const MyContext = ({children}) => {
     const nomeCidade = selectedCountie;
     const response = await fetch(`https://viacep.com.br/ws/${sigla}/${nomeCidade}/${log}/json/`);
     const json = await response.json();
-    setData(json);
+    setDataCEP(json);
   }
 
   const value = {
@@ -81,6 +83,8 @@ const MyContext = ({children}) => {
     setSelectedCounti,
     selectedCountie,
     getCEP,
+    dataCEP,
+    setDataCEP,
   }
 
   return (
