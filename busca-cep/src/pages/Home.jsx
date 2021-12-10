@@ -1,7 +1,6 @@
 import React from 'react'
 import Body from '../components/body/Body'
 import Button from '../components/button/Button'
-import SvgHome from '../components/SvgHome'
 import { Container } from './styled'
 
 const Home = () => {

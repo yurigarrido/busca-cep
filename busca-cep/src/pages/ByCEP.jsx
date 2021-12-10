@@ -7,6 +7,7 @@ import { GlobalContext } from '../context/MyContext'
 import { Container } from './styled'
 import iconCep from '../icons/iconCep.svg'
 import SvgHome from '../components/SvgHome'
+import { ResponseCEP } from '../components/styledResponse'
 
 const ByCEP = () => {
   const {cep, setCep, data} = React.useContext(GlobalContext)
@@ -24,6 +25,19 @@ const ByCEP = () => {
             value={ cep }
             changeStatus={ setCep }
           />
+           { data && (
+          <>
+            <ResponseCEP>CEP:{data.cep}</ResponseCEP>
+            <ResponseCEP>Cidade: {data.localidade}</ResponseCEP>
+            <ResponseCEP>UF: {data.uf}</ResponseCEP>
+            <ResponseCEP>Bairro: {data.bairro}</ResponseCEP>
+            <Button 
+              text='Nova Busca'
+              type='button'
+              novaBusca='true'
+            />
+          </>
+          )}
           <Button 
             type='button' 
             text='Buscar'
@@ -42,23 +56,7 @@ const ByCEP = () => {
       </ContainerHome>
       
       <div>
-        { data && (
-          <>
-            <span>CEP:</span>
-            <p>{data.cep}</p>
-            <span>Cidade:</span>
-            <p>{data.localidade}</p>
-            <span>UF:</span>
-            <p>{data.uf}</p>
-            <span>Bairro: </span>
-            <p>{data.bairro}</p>
-            <Button 
-              text='Nova Busca'
-              type='button'
-              novaBusca='true'
-            />
-          </>
-          )}
+       
       </div>
     </Container>
   )

@@ -5,9 +5,10 @@ import Input from './Input'
 import SelectMenu from './SelectMenu'
 import { FormStyled } from './styled'
 import { Label } from './label'
+import { ResponseCEP } from '../styledResponse'
 
 const FormAdress = () => {
-  const { estados, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti, data } = React.useContext(GlobalContext);
+  const { estados, dataCEP, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti, data } = React.useContext(GlobalContext);
 
   return (
     <>
@@ -38,19 +39,17 @@ const FormAdress = () => {
           text='Voltar'
           nextHistory='/'
         />
-        <div>
-        { data && (
+        { dataCEP && (
           <>
 
-            <p>{data[0].cep}</p>
             <Button 
               text='Nova Busca'
               type='button'
               novaBusca='true'
             />
+            <ResponseCEP> CEP: {dataCEP[0].cep}</ResponseCEP>
           </>
           )}
-      </div>
     </>
   )
 }
