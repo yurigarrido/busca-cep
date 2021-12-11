@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SelectStyled = styled.select `
+export const SelectStyled = styled.select`
   background-color: f5f5f5;
   width: 70%;
   margin-bottom: 1rem;

@@ -4,10 +4,9 @@ export const GlobalContext = React.createContext()
 
 const MyContext = ({children}) => {
   // input cpd
-  const [cep, setCep] = useState(null)
+  const [cep, setCep] = useState('')
   // dados pelo cpf
   const [data, setData] = useState('')
-
   // estados fetch
   const [estados, setEstados] = useState(null)
   // cidade fetch
@@ -18,20 +17,24 @@ const MyContext = ({children}) => {
   const [ listCounties, setListCounties] = useState([])
   // input logadouro
   const [logradouro, setLogradouro] = useState('')
-
   // base para pegar id
   const [ InfoLocation, setInfoLocation] = useState([])
   // id
   const [id, setId] = useState({id: 11})
   //data cep
   const [dataCEP, setDataCEP] = useState(null)
+  const [error, setError] = useState(false)
 
 
   async function fetchApi(cep, type){
-    if(type) {
+    const sizeCEP = Array.from(cep)
+    if(type && sizeCEP.length === 8) {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
       const json = await response.json();
       setData(json)
+      setError(false)
+    } else {
+      setError(true)
     }
   }
 
@@ -61,9 +64,14 @@ const MyContext = ({children}) => {
     const log = logradouro;
     const sigla = selectedState;
     const nomeCidade = selectedCountie;
-    const response = await fetch(`https://viacep.com.br/ws/${sigla}/${nomeCidade}/${log}/json/`);
-    const json = await response.json();
-    setDataCEP(json);
+    if ( log !== '' && nomeCidade !== '' && sigla.length !== 1 ) {
+      const response = await fetch(`https://viacep.com.br/ws/${sigla}/${nomeCidade}/${log}/json/`);
+      const json = await response.json();
+      setDataCEP(json);
+      setError(false)
+    } else {
+      setError(true)
+    }
   }
 
   const value = {
@@ -85,6 +93,7 @@ const MyContext = ({children}) => {
     getCEP,
     dataCEP,
     setDataCEP,
+    error,
   }
 
   return (

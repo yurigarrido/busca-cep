@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Label = styled.label `
+export const Label = styled.label`
   color: #CB1B1B;
   font-weight: bold;
   display: block;
