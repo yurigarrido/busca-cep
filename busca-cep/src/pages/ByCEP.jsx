@@ -8,9 +8,10 @@ import { Container } from './styled'
 import iconCep from '../icons/iconCep.svg'
 import SvgHome from '../components/SvgHome'
 import { ResponseCEP } from '../components/styledResponse'
+import { Label } from '../components/form/label'
 
 const ByCEP = () => {
-  const {cep, setCep, data} = React.useContext(GlobalContext)
+  const {cep, setCep, data, error} = React.useContext(GlobalContext)
   return (
     <Container>
     <NavLink />
@@ -19,12 +20,11 @@ const ByCEP = () => {
         <Input
             type='number'
             text='CEP'
-            isRequired='true'
-            max='8'
             placeholder='digite seu CEP aqui...'
             value={ cep }
             changeStatus={ setCep }
           />
+           { error && <Label>Preencha o CEP corretamente</Label>}
            { data && (
           <>
             <ResponseCEP>CEP:{data.cep}</ResponseCEP>

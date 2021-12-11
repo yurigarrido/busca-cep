@@ -8,6 +8,5 @@ export const Nav = styled.nav `
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 2px;
     color: #0e4b9c;
-
   };
 `

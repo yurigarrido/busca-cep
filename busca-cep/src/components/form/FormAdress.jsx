@@ -8,7 +8,16 @@ import { Label } from './label'
 import { ResponseCEP } from '../styledResponse'
 
 const FormAdress = () => {
-  const { estados, dataCEP, setSelectedState, listCounties, logradouro, setLogradouro, setSelectedCounti, data } = React.useContext(GlobalContext);
+  const {
+    estados,
+    dataCEP,
+    setSelectedState,
+    listCounties,
+    logradouro,
+    setLogradouro,
+    setSelectedCounti,
+    error,
+  } = React.useContext(GlobalContext);
 
   return (
     <>
@@ -31,6 +40,7 @@ const FormAdress = () => {
           changeStatus={setLogradouro}
         />
       </FormStyled>
+        { error && <Label>Há um erro no preenchimento dos campos, favor verficar.</Label>}
         <Button 
           text='Pesquisar'
           adress
@@ -41,7 +51,6 @@ const FormAdress = () => {
         />
         { dataCEP && (
           <>
-
             <Button 
               text='Nova Busca'
               type='button'

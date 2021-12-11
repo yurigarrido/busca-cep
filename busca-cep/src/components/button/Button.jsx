@@ -8,7 +8,9 @@ const Button = ({text, type, nextHistory, adress,  fetch, novaBusca}) => {
   const { fetchApi, cep, setData, setDataCEP, setCep, getCEP } = React.useContext(GlobalContext)
 
   const handleClick =(async () => {
-    if(fetch) await fetchApi(cep, true)
+    if(fetch) {
+      await fetchApi(cep, true)
+    }
       else if(novaBusca === 'true') {
         setData('')
         setCep('')

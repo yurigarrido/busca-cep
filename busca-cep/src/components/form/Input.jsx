@@ -2,7 +2,7 @@ import React from 'react'
 import { InputStyled } from './input'
 import { Label } from './label'
 
-const Input = ({type, placeholder, changeStatus, text, value, isRequired}) => {
+const Input = ({type, placeholder, changeStatus, text, value}) => {
 
   return (
     <>
@@ -14,7 +14,6 @@ const Input = ({type, placeholder, changeStatus, text, value, isRequired}) => {
       value ={ value }
       placeholder={ placeholder }
       onChange={({target}) => changeStatus(target.value) }
-      required={ isRequired }
       />
     </>
   )
