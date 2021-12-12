@@ -35,6 +35,8 @@
   * `git clone git@github.com:yurigarrido/busca-cep.git`
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd busca-cep`
+    * entre na pasta do projeto
+      * `cd busca-cep`
 
 2. Instale as dependências:
     * `npm install`
