@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Header from './components/header/Header';
+import Home from './pages/Home';
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  render(<Header />);
+  const linkElement = screen.getByText(/lbem vindo/i);
   expect(linkElement).toBeInTheDocument();
 });
